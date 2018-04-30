@@ -119,7 +119,7 @@ ggplot(simus, aes(x = simus)) + geom_histogram(aes(y=..density..), binwidth=0.2,
   labs(title = "Figure 1: Sampling Distribution of Averages", subtitle = "(n = 40, num = 1000)", x = "simulation mean") + theme(plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold"), plot.subtitle = element_text(hjust = 0.5, vjust = 3, size = 12, face = "italic"))
 ```
 
-![](Final_Project_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](Final_Project_files/figure-html/1.png)<!-- -->
 
 Here the sampling distribution of simulation averages is very similar to a normal distribution. Use a [Q-Q plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) to confirm our intuitive guess.
 
@@ -129,7 +129,7 @@ qqnorm(mean.simu_exp)
 qqline(mean.simu_exp, col = 2)
 ```
 
-![](Final_Project_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Final_Project_files/figure-html/2.png)<!-- -->
 
 The scatter points converges pretty well to the Q-Q line. Conclude that CLT works pretty well in this case with 1,000 simulations and 40 simulated samples each. 
 
@@ -175,7 +175,7 @@ ggplot(ToothGrowth, aes(x = factor(dose), y = len)) + facet_grid(. ~ supp) + geo
   labs(x="dose (mg/day)", y="tooth length") + ggtitle("Figure 2: Guinea Pig Tooth Length versus Dose by Supplement Type") + theme(plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold"))
 ```
 
-![](Final_Project_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](Final_Project_files/figure-html/3.png)<!-- -->
 
 A pattern can be obviously discovered with the panel above, we guess that tooth length is positively associated with dose and the effect of dose on tooth length varies across supplement types. There might not be much difference between average tooth growth of the orange juice group and the ascorbic acid group on dose level of 2.0 mg.
 
