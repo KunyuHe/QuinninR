@@ -27,4 +27,4 @@ List of the Published Work Samples
 -------------------------------------
 * [Coursera Mentor Work Sample for Statistical Inference: Simulations and Hypothesis Testing with R](https://rpubs.com/QuinninR/384471)
   
-  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/Coursera%20Mentor%20Work%20Sample%20for%20Statistical%20Inference:%20Simulations%20and%20Hypothesis%20Testing.md)
+  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS1/Coursera%20Mentor%20Work%20Sample%20for%20Statistical%20Inference:%20Simulations%20and%20Hypothesis%20Testing%20with%20R.md)
