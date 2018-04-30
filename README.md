@@ -21,8 +21,8 @@ __Any feedbacks on my works? You are welcomed to reach me at [kunyuhe@uchicago.c
 
 __For Chinese users, if you would like to receive timely notice of this repo's further updates, you can follow my Wechat Official Account, `QuinninR`.__
 
-Thanks for reading and have a good day __=v=!__
+__Thanks for reading and have a good day! =v=__
 
 List of the Published Work Samples
 -------------------------------------
-* 
+* [Coursera Mentor Work Sample for Statistical Inference: Simulations and Hypothesis Testing with R]()
