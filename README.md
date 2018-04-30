@@ -8,14 +8,14 @@ I work with data, and I feel most comfortable working with *R* and *RStudio*. I'
 
 About this Repo
 ------------------------
-This is a repo where I'll put the `.md` files containing my data analysis work samples documented with *R*. These samples can be: 
+This is a repo where I'll put my data analysis work samples documented with *R* and corresponding `.md` files. These samples can be: 
 
 * Student Mentor work samples for certain courses on Coursera;   
 * Data analysis reports for reproducing my published or working academic research papers;
 * from data-driven projects that I participated as a student or research assistant;
 * Products out of pure interest or for fun __QvQ__
 
-__To view my work samples, please review the list in the following section and find the ones that interest you. To further review corresponding codes behind a certain work, please register for Github, fork this repo, find the link to the corresponding `.md` file again in your forked repo, and click edit.__
+__To view my work samples, please review the list in the following section and find the ones that interest you. To further review corresponding codes behind a certain work, please register for Github, fork this repo, find the link to the corresponding `.md` file in the list in your forked repo, and edit the work.__
 
 __Any feedbacks on my works? You are welcomed to reach me at [kunyuhe@uchicago.com](kunyuhe@uchicago.com). You can also edit the documents directly in your forked repo and send me a pull request.__ Here is a [guide](https://help.github.com/articles/about-pull-requests/) for how to do so. I'll be glad to add you as a contributor to this project and maybe one day I'll change the name of this repo for you __;)__
 
@@ -25,6 +25,6 @@ __Thanks for reading and have a good day! =v=__
 
 List of the Published Work Samples
 -------------------------------------
-* [Coursera Mentor Work Sample for Statistical Inference: Simulations and Hypothesis Testing with R]()
+* [Coursera Mentor Work Sample for Statistical Inference: Simulations and Hypothesis Testing with R](https://rpubs.com/QuinninR/384471)
   
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/Coursera%20Mentor%20Work%20Sample%20for%20Statistical%20Inference:%20Simulations%20and%20Hypothesis%20Testing.md)
