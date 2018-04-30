@@ -13,8 +13,16 @@ This is a repo where I'll put the `.md` files containing my data analysis work s
 * Student Mentor work samples for certain courses on Coursera;   
 * Data analysis reports for reproducing my published or working academic research papers;
 * from data-driven projects that I participated as a student or research assistant;
-* Products out of pure interest or for fun
+* Products out of pure interest or for fun __QvQ__
 
 __To view my work samples, please review the list of my published `.md` files in the following section and find the ones that interest you. To further review corresponding codes behind a certain work, please register for Github, fork this repo, find the work again in your forked repo and click edit.__
 
-Any feedbacks on my works? You are welcomed to reach me at [kunyuhe@uchicago.com](kunyuhe@uchicago.com). You can also edit the codes or the documents directly in your forked repo and send me a merge requirement.
+__Any feedbacks on my works? You are welcomed to reach me at [kunyuhe@uchicago.com](kunyuhe@uchicago.com). You can also edit the documents directly in your forked repo and send me a pull request.__ Here is a [guide](https://help.github.com/articles/about-pull-requests/) for how to do so. I'll be glad to add you as a contributor to this project and maybe one day I'll change the name of this repo for you __;)__
+
+__For Chinese users, if you would like to receive timely notice of this repo's further updates, you can follow my Wechat Official Account, `QuinninR`.__
+
+Thanks for reading and have a good day __=v=!__
+
+List of the Published Work Samples
+-------------------------------------
+* 
