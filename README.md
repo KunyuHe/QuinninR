@@ -29,6 +29,6 @@ List of the Published Work Samples
   
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS1/Coursera%20Mentor%20Work%20Sample%20for%20Statistical%20Inference:%20Simulations%20and%20Hypothesis%20Testing%20with%20R.md)
   
-* [Coursera Mentor Work Sample for Statistical with R Capstone: Determinants of Housing Price in Ames, Iowa](http://rpubs.com/QuinninR/385616)
+* [Coursera Mentor Work Sample for Statistics with R Capstone: Determinants of Housing Price in Ames, Iowa](http://rpubs.com/QuinninR/385616)
 
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS2/Final_Project_KunyuHE.md)
