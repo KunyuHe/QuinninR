@@ -222,9 +222,7 @@ Table: Table 1
 
 According to special notes in the codebook: 
 
---------
-*"There are 5 observations that an instructor may wish to remove from the data set before giving it to students. Three of them are true outliers (Partial Sales that likely don°Øt represent actual market values) and two of them are simply unusual sales (very large houses priced relatively appropriately). I would recommend removing any houses with more than 4000 square feet from the data set (which eliminates these 5 unusual observations)"*
-----------
+*"There are 5 observations that an instructor may wish to remove from the data set before giving it to students. Three of them are true outliers (Partial Sales that likely don‚Äôt represent actual market values) and two of them are simply unusual sales (very large houses priced relatively appropriately). I would recommend removing any houses with more than 4000 square feet from the data set (which eliminates these 5 unusual observations)"*
 
 Visualise these data points in __Figure 1__, and remove these potential outliers.
 
@@ -378,7 +376,7 @@ After initial data processing, there are **976** observations and **74** variabl
 
 ## Log_price versus Neiborhood
 
-The mantra in real estate is °∞Location, Location, Location!°± The most likely predictor of housing price that occurs to me is the neiborhood. Make a boxplot to show the association in **Figure 4**, using median of `log_price` to measure the neighborhood sales price of houses °∞on average°±. Arrange the neighborhoods by descending order.
+The mantra in real estate is ‚ÄúLocation, Location, Location!‚Äù The most likely predictor of housing price that occurs to me is the neiborhood. Make a boxplot to show the association in **Figure 4**, using median of `log_price` to measure the neighborhood sales price of houses ‚Äúon average‚Äù. Arrange the neighborhoods by descending order.
 
 
 ```r
@@ -399,11 +397,11 @@ ggplot(ames_train, aes(y=log_price, x=Neighborhood)) +
 
 ![](Final_Project_KunyuHE_files/figure-html/neighbor-log-price-1.png)<!-- -->
 
-The box plot shows how price increases across neighborhoods. By the median of `log_price` in each neiborhood, the most °∞expensive°± neighborhood is `Stone Brook` and the cheapest is `Meadow Village`.
+The box plot shows how price increases across neighborhoods. By the median of `log_price` in each neiborhood, the most ‚Äúexpensive‚Äù neighborhood is `Stone Brook` and the cheapest is `Meadow Village`.
 
 To test whether the two variables are dependent, i.e. whether the median of `log_price` changes significantly  across neighborhoods, conduct a [Kruskal-Wallis test](https://en.wikipedia.org/wiki/Kruskal%E2%80%93Wallis_one-way_analysis_of_variance).
 
-Check the assumptions of Kruskal-Wallis test first. As a non-parametric test, Kruskal-Wallis test does not assume normal distribution of each grouped population, but it assumes [homoscedasticity](https://en.wikipedia.org/wiki/Homoscedasticity). To test whether the assumption of homoscedasticity holds, use a [Levene°Øs test](https://en.wikipedia.org/wiki/Levene%27s_test). The null hypothesis is that the standard deviations across neighborhoods are identical.
+Check the assumptions of Kruskal-Wallis test first. As a non-parametric test, Kruskal-Wallis test does not assume normal distribution of each grouped population, but it assumes [homoscedasticity](https://en.wikipedia.org/wiki/Homoscedasticity). To test whether the assumption of homoscedasticity holds, use a [Levene‚Äôs test](https://en.wikipedia.org/wiki/Levene%27s_test). The null hypothesis is that the standard deviations across neighborhoods are identical.
 
 
 ```r
@@ -437,13 +435,13 @@ kruskal.test(log_price ~ Neighborhood, data = ames_train)
 
 As the test results shows, *p-value* again turns out to be nearly zero. Hence we reject the null hypothesis, and conclude that at a significance level of 5%, median price of houses in ames across at least two out of the 28 neiborhoods from `Meadow Village` to `Stone Brook` are non-identical populations.
 
-However, Kruskal-Wallis test is very vulnerable to heteroscedasticity across groups. With its assumption of homoscedasticity violated, we should be really careful to apply its conclusion to our sample. It°Øs not encouraged to further conduct a Conover-Iman test to find out which pairs of populations diverge. 
+However, Kruskal-Wallis test is very vulnerable to heteroscedasticity across groups. With its assumption of homoscedasticity violated, we should be really careful to apply its conclusion to our sample. It‚Äôs not encouraged to further conduct a Conover-Iman test to find out which pairs of populations diverge. 
 
-To be brief and direct, we could include `Neighborhood` in our model to predict the housing price. However we should be really careful in doing so, as long as there°Øs no better tool, according to my knowledge, than Kruskal-Wallis test to overcome heteroscedasticity, suggested by our Levene°Øs test, across at least one pair of distributions of `log_price` of two neighborhoods at a significance level of 5%.
+To be brief and direct, we could include `Neighborhood` in our model to predict the housing price. However we should be really careful in doing so, as long as there‚Äôs no better tool, according to my knowledge, than Kruskal-Wallis test to overcome heteroscedasticity, suggested by our Levene‚Äôs test, across at least one pair of distributions of `log_price` of two neighborhoods at a significance level of 5%.
 
 ## Log_price versus Basement Condition
 
-Large houses tend to be more expensive. For houses with basements, the quality of the basements is certainly of concern. During rigid winters in North America, a nice basement can provide its residentsa warm and dry place to stay. One interesting finding of this EDA process is the association between `log_price` and  `Bsmt.Cond`, where the latter refers to °∞Basement Condition°±.
+Large houses tend to be more expensive. For houses with basements, the quality of the basements is certainly of concern. During rigid winters in North America, a nice basement can provide its residentsa warm and dry place to stay. One interesting finding of this EDA process is the association between `log_price` and  `Bsmt.Cond`, where the latter refers to ‚ÄúBasement Condition‚Äù.
 
 `Bsmt.Cond` is a categorical variable with multiple categories, extend the abbreviations and reorder the levels to present our findings better. Also, substitute the missing values with `No Basement`.
 
