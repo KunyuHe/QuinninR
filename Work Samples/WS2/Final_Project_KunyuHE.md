@@ -1,5 +1,5 @@
 ---
-title: "Final Project: Determinants of Housing Price in Ames, Iowa"
+title: "Final Project (Part I): Determinants of Housing Price in Ames, Iowa"
 author: "Quinn He"
 date: "04/30/2018"
 output:
@@ -17,6 +17,19 @@ output:
 ***
 # Synopsis
 ***
+
+This is **Part I** of the final project of the Capstone Course in the Statistics with R specialization on Coursera, which includes merely the first three sections of the whole report. In this report, I'll:
+
+* Get the data;
+* Clean the data, delete the variables with too many missing values and drop the potential outliers;
+* Perform exploratory data analysis, find the likely predictors of housing price
+
+My findings include:
+
+* 10 variables removed (contain too many missing values or take only one value);
+* 24 potential outliers removed (abnormal sales)
+* Log transformation of price and area
+* Two potential predictors (neighborhoods, basement conditions)
 
 ***
 # Data
@@ -50,30 +63,28 @@ if(!require(ggpubr)){install.packages('ggpubr')}
 
 ## Getting the Data
 
-Download the data from online resources and save it as `ames_train.RData`. Load it into our working environment.
+Download the data from online resources and save it as `ames_train.RData`. If you cannot access the data set automatically, please copy the url and download the data by hand. Remember to save it to your own working directory and save it with the proper name.
+
+Load the data into our working environment.
 
 
 ```r
 # check if the data is ready, if not, download it from the Internet
-if(!file.exists("./ames_train.RData")){
-  fileUrl <- "https://d3c33hcgiwev3.cloudfront.net/_fc6ea3b3b1af3f4fd9afb752e85d4299_ames_train.Rdata?Expires=1525305600&Signature=H0Q0p233C77y0YdcN-ULRY0~BhfE1Xk4ECNraHF3hTgA4whjBqloUvzeNgsb8n42ST9lkEn-XoGsm2IMSZWVoHU5URCOqmU-kS~bLN1jQEafcm-DzRDH-cD7rv0TFioZN9M-NMJxFL4dAWDbPC1yr5ZpAS04RHyXJGqmcndZk0Y_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A"
+if(!file.exists("./ames_train.RData")){ 
+  fileUrl <- "http://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS2/Data/ames_train.Rdata"
   download.file(fileUrl, destfile = "./ames_train.RData")
 }
 
-dateDownloaded <- date()
+# load data
+load('ames_train.RData')
 ```
-
-The data was downloaded on **Wed May 02 08:42:10 2018**. Then load the data into the working environment and make a cache.
 
 ## About the Data
 
 
 ```r
-# load data
-load('ames_train.RData')
-
 # check its dimension
-dim <- dim(ames_train)
+dim <- dim(ames_train) # dim() output list: [count of observations (rows), number of variables (columns)]
 dim
 ```
 
@@ -91,7 +102,7 @@ __Please take a look at the [codebook](https://ww2.amstat.org/publications/jse/v
 
 ## Missing Values
 
-Make a summary table of `ames_train` (for simplicity of this report, the summary table is hiden).
+Make a summary table of `ames_train` (for simplicity of this report, the summary table is hidden).
 
 
 ```r
@@ -104,10 +115,10 @@ Note that some variables in `ames_train` have `NA` values, we should eliminate t
 
 ```r
 # sum up missing values in each column
-most_NA <- colSums(is.na(ames_train))
+most_NA <- colSums(is.na(ames_train)) # creat a named list with variables as names and count of NAs as the elements 
 
 # sort the named list by decreasing order of NAs
-most_NA <- sort(most_NA, decreasing = T)
+most_NA <- sort(most_NA, decreasing = T) # arrange the named list with descending order
   
 NAs <- data.frame(Variable = names(most_NA)[1:10],
                   NAs = unname(most_NA)[1:10]) # creat a data.frame to make a summary table
@@ -179,8 +190,9 @@ From the summary table, variable `utilities` has only one value `AllPub`, which 
 
 
 ```r
-ames_train <- ames_train %>%
-     select(-Pool.QC, -Pool.Area, 
+# remove variables, select(-VarName)
+ames_train <- select(ames_train,
+            -Pool.QC, -Pool.Area, 
             -Misc.Feature, -Misc.Val, 
             -Alley, 
             -Fence, 
@@ -214,16 +226,16 @@ According to special notes in the codebook:
 *"There are 5 observations that an instructor may wish to remove from the data set before giving it to students. Three of them are true outliers (Partial Sales that likely don¡¯t represent actual market values) and two of them are simply unusual sales (very large houses priced relatively appropriately). I would recommend removing any houses with more than 4000 square feet from the data set (which eliminates these 5 unusual observations)"*
 ----------
 
-Visualise these data points in Figure 1, and remove these potential outliers.
+Visualise these data points in __Figure 1__, and remove these potential outliers.
 
 
 ```r
 ggplot(ames_train, aes(x = area, y = price)) + # set x,y variable
         geom_point(shape = 15, color = "darkmagenta", size = 1) + # use scatter plot and set shape of the data points
         theme_minimal() + # use simple background
-        labs(xlab = "sales price", ylab = "living area") + 
-        ggtitle("Figure 1: Sales Price versus Living Area") + 
-        theme(plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold"))
+        labs(xlab = "sales price", ylab = "living area") + # set labels for x,y axis
+        ggtitle("Figure 1: Sales Price versus Living Area") + # set title
+        theme(plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold")) # beautify title
 ```
 
 ![](Final_Project_KunyuHE_files/figure-html/outlier(s)-1.png)<!-- -->
@@ -232,13 +244,13 @@ ggplot(ames_train, aes(x = area, y = price)) + # set x,y variable
 ames_train <- filter(ames_train, area < 4000)
 ```
 
-Note the fan-like trend in the relationship between `price` and `area`. We expect that the distributions of both variables are somehow skewed. Plot their distributions in Figure 2.
+Note the fan-like trend in the relationship between `price` and `area`. We expect that the distributions of both variables are somehow skewed. Plot their distributions in __Figure 2__.
 
 
 ```r
 plot1 <- ggplot(ames_train, aes(x = price)) + 
                 geom_histogram(binwidth = 10000, fill = "deepskyblue3", color="darkmagenta") +
-                scale_x_continuous(name = "sales price", breaks = seq(0,650000, 50000)) + 
+                scale_x_continuous(name = "sales price", breaks = seq(0,650000, 50000)) + # set scale on x-axis
                 ggtitle("Distribution of Sales Price") +
                 theme_minimal() +
                 theme(plot.title = element_text(hjust = 0.5, vjust = 1, size = 12, face = "italic"))
@@ -249,9 +261,9 @@ plot2 <- ggplot(ames_train, aes(x = area)) +
                 theme_minimal() + 
                 theme(plot.title = element_text(hjust = 0.5, vjust = 1, size = 12, face = "italic"))
         
-main = text_grob("Figure 2: Distribution of Sales Price and Living Area", size = 16, face = "bold", hjust = 0.5, vjust = 0.2)
+main = text_grob("Figure 2: Distribution of Sales Price and Living Area", size = 16, face = "bold", hjust = 0.5, vjust = 0.2) # set the overall title
         
-grid.arrange(plot1, plot2, nrow = 2, top = main)
+grid.arrange(plot1, plot2, nrow = 2, top = main) # arrange the plots with 2 rows and 1 column
 ```
 
 ![](Final_Project_KunyuHE_files/figure-html/area-price-dist-1.png)<!-- -->
@@ -290,7 +302,7 @@ ames_train <- mutate(ames_train,
                      log_area = log(area))
 ```
 
-Check the post-adjustment distribution in Figure 3.
+Check the post-adjustment distribution in __Figure 3__.
 
 
 ```r
@@ -318,7 +330,7 @@ grid.arrange(plot1, plot2, nrow = 2, top = main)
 rm(plot1, plot2, main)
 ```
 
-Check `log_price` against `log_area`.
+Check `log_price` against `log_area` in __Figure 4__.
 
 
 ```r
@@ -326,7 +338,7 @@ ggplot(ames_train, aes(x = log_area, y = log_price)) +
         geom_point(shape = 15, color = "darkmagenta", size = 1) + 
         theme_minimal() +
         xlab("log(sales price)") + ylab("log(living area)") + 
-        ggtitle("Figure 2: Log(Sales Price) versus Log(Living Area)") + 
+        ggtitle("Figure 4: Log(Sales Price) versus Log(Living Area)") + 
         theme(plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold"))
 ```
 
@@ -334,7 +346,7 @@ ggplot(ames_train, aes(x = log_area, y = log_price)) +
 
 Their relation now seems much more linear after log transformations. It was also suggested in the codebook that effective observations typically do not take abnormal values in `Sale.Condition`, i.e. are sold normally. Abnormal sales include foreclosures, adjoining land purchase, allocation, and family sales, which might make our estimates biased.
 
-Check their frequencies and scrutinize the relationship between `log_price` and `log_area` (for illustration) conditioning on `Sale.Condition` with a panel of scatter plots in Figure 3.
+Check their frequencies and scrutinize the relationship between `log_price` and `log_area` (for illustration) conditioning on `Sale.Condition` with a panel of scatter plots in __Figure 3__.
 
 
 ```r
@@ -342,7 +354,7 @@ levels(ames_train$Sale.Condition) <- c("Foreclosures", "Adjoining Land Purchase"
 ggplot(ames_train, aes(x=log_area, y= log_price)) + 
           geom_point(size = 1.5, shape = 3, color = "darkmagenta") + 
           xlab("log(sales price)") + ylab("log(living area)") + 
-          facet_grid(.~ Sale.Condition) + # make the panel
+          facet_grid(.~ Sale.Condition) + # make the panel conditioned on `Sale.Condition`
           ggtitle("Figure 3: Log(Sales Price) against Log(Living Area)", subtitle="(conditioned on Sale.Condition)") + 
           theme(plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold"), 
                 plot.subtitle = element_text(hjust=0.5, vjust=3, size = 12, face = "italic"))
@@ -350,15 +362,219 @@ ggplot(ames_train, aes(x=log_area, y= log_price)) +
 
 ![](Final_Project_KunyuHE_files/figure-html/remove_observations-1.png)<!-- -->
 
-Note that the linear relationship appears to be consistent with the one in Figure 2 in the `Foreclosures`, `Normal` and `Partial` groups. Drop potential outliers with other abnormal sale conditions. 
+Note that the linear relationship appears to be consistent with the one in __Figure 2__ in the `Foreclosures`, `Normal` and `Partial` groups. Drop potential outliers with other abnormal sale conditions. 
 
 
 ```r
 ames_train <- subset(ames_train, Sale.Condition %in% c("Normal", "Partial", "Foreclosures"))
-print(paste("There are", dim(ames_train)[1], "observations and", dim(ames_train)[2], "variables after initial data processing",sep = " "), quote = FALSE)
+dim <- dim(ames_train)
+```
+
+After initial data processing, there are **976** observations and **74** variables left for our analysis.
+
+***
+# Exploratory Data Analysis (detailed)
+***
+
+## Log_price versus Neiborhood
+
+The mantra in real estate is ¡°Location, Location, Location!¡± The most likely predictor of housing price that occurs to me is the neiborhood. Make a boxplot to show the association in **Figure 4**, using median of `log_price` to measure the neighborhood sales price of houses ¡°on average¡±. Arrange the neighborhoods by descending order.
+
+
+```r
+# make an ordered list of the neighborhoods
+log_price_neighbor <- order(as.numeric(by(ames_train$log_price, ames_train$Neighborhood, median)))
+
+# apply the ordering
+ames_train$Neighborhood <- ordered(ames_train$Neighborhood, levels=levels(ames_train$Neighborhood)[log_price_neighbor])
+
+ggplot(ames_train, aes(y=log_price, x=Neighborhood)) +
+        geom_boxplot() +
+        ylab("log_price") + 
+        ggtitle("Figure 4: Log_price against Neighborhoods", subtitle="(ordered by median of log_price)") +
+        theme(axis.text.x = element_text(angle = 45,hjust = 1), # use inclined text on the x-axis
+              plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold"), 
+              plot.subtitle = element_text(hjust = 0.5, vjust = 3, size = 12, face = "italic"))
+```
+
+![](Final_Project_KunyuHE_files/figure-html/neighbor-log-price-1.png)<!-- -->
+
+The box plot shows how price increases across neighborhoods. By the median of `log_price` in each neiborhood, the most ¡°expensive¡± neighborhood is `Stone Brook` and the cheapest is `Meadow Village`.
+
+To test whether the two variables are dependent, i.e. whether the median of `log_price` changes significantly  across neighborhoods, conduct a [Kruskal-Wallis test](https://en.wikipedia.org/wiki/Kruskal%E2%80%93Wallis_one-way_analysis_of_variance).
+
+Check the assumptions of Kruskal-Wallis test first. As a non-parametric test, Kruskal-Wallis test does not assume normal distribution of each grouped population, but it assumes [homoscedasticity](https://en.wikipedia.org/wiki/Homoscedasticity). To test whether the assumption of homoscedasticity holds, use a [Levene¡¯s test](https://en.wikipedia.org/wiki/Levene%27s_test). The null hypothesis is that the standard deviations across neighborhoods are identical.
+
+
+```r
+leveneTest(log_price ~ Neighborhood, data = ames_train)
 ```
 
 ```
-## [1] There are 976 observations and 74 variables after initial data processing
+## Levene's Test for Homogeneity of Variance (center = median)
+##        Df F value          Pr(>F)    
+## group  26  3.9836 0.0000000001535 ***
+##       949                            
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+As the test results shows, *p-value* turns out to be close to zero. Hence we reject the null hypothesis, and conclude that at least a pair of distributions of `log_price` across neighborhoods have heteroscedasticity problem, at a significance level of 5%.
+
+
+```r
+kruskal.test(log_price ~ Neighborhood, data = ames_train)
+```
+
+```
+## 
+## 	Kruskal-Wallis rank sum test
+## 
+## data:  log_price by Neighborhood
+## Kruskal-Wallis chi-squared = 645.42, df = 26, p-value <
+## 0.00000000000000022
+```
+
+As the test results shows, *p-value* again turns out to be nearly zero. Hence we reject the null hypothesis, and conclude that at a significance level of 5%, median price of houses in ames across at least two out of the 28 neiborhoods from `Meadow Village` to `Stone Brook` are non-identical populations.
+
+However, Kruskal-Wallis test is very vulnerable to heteroscedasticity across groups. With its assumption of homoscedasticity violated, we should be really careful to apply its conclusion to our sample. It¡¯s not encouraged to further conduct a Conover-Iman test to find out which pairs of populations diverge. 
+
+To be brief and direct, we could include `Neighborhood` in our model to predict the housing price. However we should be really careful in doing so, as long as there¡¯s no better tool, according to my knowledge, than Kruskal-Wallis test to overcome heteroscedasticity, suggested by our Levene¡¯s test, across at least one pair of distributions of `log_price` of two neighborhoods at a significance level of 5%.
+
+## Log_price versus Basement Condition
+
+Large houses tend to be more expensive. For houses with basements, the quality of the basements is certainly of concern. During rigid winters in North America, a nice basement can provide its residentsa warm and dry place to stay. One interesting finding of this EDA process is the association between `log_price` and  `Bsmt.Cond`, where the latter refers to ¡°Basement Condition¡±.
+
+`Bsmt.Cond` is a categorical variable with multiple categories, extend the abbreviations and reorder the levels to present our findings better. Also, substitute the missing values with `No Basement`.
+
+
+```r
+# rename the levels
+levels(ames_train$Bsmt.Cond) <- c("No Basement", "Excellent", "Fair", "Good",  "Poor", "Typical")
+
+# substitute NAs
+ames_train[is.na(ames_train$Bsmt.Cond), "Bsmt.Cond"] <- "No Basement"
+
+# reorder the levels
+ames_train$Bsmt.Cond <- factor(ames_train$Bsmt.Cond, levels = c("No Basement", "Poor", "Typical", "Fair", "Good", "Excellent"))
+```
+
+Make a boxplot of `log_price` against `Bsmt.Cond` in **Figure 5**
+
+
+```r
+ggplot(data = ames_train, aes(x = Bsmt.Cond, y = log_price, fill = Bsmt.Cond)) + # fill the box with colors conditioned on x variable to make better plot
+        geom_boxplot(outlier.color = "purple") + 
+        ggtitle("Figure 5: Log_price against Basement Conditions") + 
+        xlab("basement condition") + ylab("log_price") + 
+        theme_minimal() + 
+        theme(axis.text.x = element_text(angle = 45,hjust = 1), # use inclined text on the x-axis
+              plot.title = element_text(hjust = 0.5, vjust = 3, size = 14, face = "bold"))
+```
+
+![](Final_Project_KunyuHE_files/figure-html/log_price-Bsmt-1.png)<!-- -->
+
+Our finding seems counter-intuitive that it somehow contradicts our initial guess, i.e. we cannot find a clear pattern that housing price increases with basement conditions gettig better. Like wise, use a Kruskal-Wallis test to statistically determine whether the median housing price varies across basement groups. Likewise, test the assumption of homoscedasticity first.
+
+
+```r
+leveneTest(log_price ~ Bsmt.Cond, data = ames_train)
+```
+
+```
+## Levene's Test for Homogeneity of Variance (center = median)
+##        Df F value Pr(>F)
+## group   5  0.8844 0.4909
+##       970
+```
+
+As the test results shows, *p-value* turns out to be large enough ($p > 0.05$). Hence we fail to reject the null hypothesis and conclude that our sample fail to provide convincing evidence to refuse the assumption of homoscedasticity that the standard deviations across basement conditions are identical. There is no significant heteroscedasticity problem in our sample.
+
+Conditions of Kruskal-Wallis rank sum test satisfied, we can proceed to test the null hypothesis that mean ranks, or medians, are the same across basement condition groups.
+
+
+```r
+kruskal.test(log_price~Bsmt.Cond, data=ames_train)
+```
+
+```
+## 
+## 	Kruskal-Wallis rank sum test
+## 
+## data:  log_price by Bsmt.Cond
+## Kruskal-Wallis chi-squared = 56.979, df = 5, p-value =
+## 0.00000000005109
+```
+
+The reported *p-value* turns out to be nearly zero. Hence we reject the null hypothesis, and conclude that mean ranks, or medians, of `log_price` are not identical across the distributions of at least one pair of basement conditions, at a significance level of 5%. Here note that although the association is statistically significant, it's hard to observe with mere visualization. That's why statistical inference or hypothesis testing are needed for refined conclusions on the associations.
+
+With Kruskal-Wallis's null hypothesis rejected, further conduct a [Conover-Iman test](http://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-07677-MS), with [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction) of *p-values* for multiple hypothesis testing, to find out which pairs have significantly divergent distributions.
+
+
+```r
+conover.test(ames_train$log_price, g = ames_train$Bsmt.Cond, method = "bonferroni", label = TRUE,  wrap = TRUE, table = TRUE)
+```
+
+```
+##   Kruskal-Wallis rank sum test
+## 
+## data: x and group
+## Kruskal-Wallis chi-squared = 56.9786, df = 5, p-value = 0
+## 
+## 
+##                            Comparison of x by group                            
+##                                  (Bonferroni)                                  
+## Col Mean-|
+## Row Mean |   Excellen       Fair       Good   No Basem       Poor
+## ---------+-------------------------------------------------------
+##     Fair |   0.771426
+##          |     1.0000
+##          |
+##     Good |  -1.200586  -5.542136
+##          |     1.0000    0.0000*
+##          |
+## No Basem |   1.101102   0.815467   6.300019
+##          |     1.0000     1.0000    0.0000*
+##          |
+##     Poor |   0.448098  -0.019478   1.401144  -0.259908
+##          |     1.0000     1.0000     1.0000     1.0000
+##          |
+##  Typical |  -0.512297  -4.409838   3.205940  -5.333161  -0.910949
+##          |     1.0000    0.0001*    0.0104*    0.0000*     1.0000
+## 
+## alpha = 0.05
+## Reject Ho if p <= alpha/2
+```
+
+From the test report above, we conclude that at a significance level of 5%, distributions of `log_price` significantly differ between paired populations of basements categorized as `Good` and `Fair`, `Good` and `No Basement`, `Good` and `Typical`, `Typical` and `Fair`, as well as `Typical` and  `No Basement`.
+
+As a conclusion, if we are to incorporate `Bsmt.Cond` into our model to predict housing price, we should drop the categories of `Poor` and `Excellent`, as they make no significant contribution to capture the variations in `log_price`. It's might be resulted from the highly limited number of observations with poor or excellent basements. Calculate the proportion of either case in our sample separately with a user-written function `pro()`.
+
+
+```r
+# write the function
+pro = function(x, y) {
+        round(sum(x == y) / length(ames_train$PID) * 100, digits = 2)
+}
+
+# apply pro()
+print(paste("The proportion of poor quality basement is: ", pro(ames_train$Bsmt.Cond, "Poor"), "%", sep = ""), quote = F)
+```
+
+```
+## [1] The proportion of poor quality basement is: 0.1%
+```
+
+```r
+print(paste("The proportion of excellent quality basement is: ", pro(ames_train$Bsmt.Cond, "Excellent"), "%", sep = ""), quote = F)
+```
+
+```
+## [1] The proportion of excellent quality basement is: 0.2%
+```
+
+```r
+# with minute proportions, drop them
+ames_train <- ames_train[ames_train$Bsmt.Cond %in% c("No Basement", "Fair", "Good", "Typical"), ]
 ```
 
