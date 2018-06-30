@@ -44,3 +44,7 @@ List of the Published Work Samples
 * [Coursera Mentor Work Sample for Practical Machine Learning: Predicting Excercising Qualities](https://rpubs.com/QuinninR/400932)
 
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS5/Project.md)
+  
+* [Business Data Science Final Project: Based on Ecommerce Customers Data](http://rpubs.com/QuinninR/400933)
+
+  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS5/Project.md)
