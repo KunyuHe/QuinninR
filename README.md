@@ -40,3 +40,7 @@ List of the Published Work Samples
 * [Coursera Mentor Work Sample for Regression Models: 1974 Motor Trend US Data Analysis](https://rpubs.com/QuinninR/395465)
 
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS4/Coursera%20Mentor%20Work%20Sample%20for%20Regression%20Models:%201974%20Motor%20Trend%20US%20Data%20Analysis.md)
+
+* [Coursera Mentor Work Sample for Practical Machine Learning: Predicting Excercising Qualities](https://rpubs.com/QuinninR/400932)
+
+  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS5/Project.md)
