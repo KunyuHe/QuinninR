@@ -13,7 +13,7 @@ output:
 
 # Executive Summary
 
-This report is an analysis based on the `mtcars` data set. The data was retrieved from the *1974 Motor Trend US* magazine, and covers fuel consumptions and ten other aspects of the design and performance of 32 automobiles (1973¨C1974 models). This report mainly attempts to address two issues:
+This report is an analysis based on the `mtcars` data set. The data was retrieved from the *1974 Motor Trend US* magazine, and covers fuel consumptions and ten other aspects of the design and performance of 32 automobiles (1973Â¨C1974 models). This report mainly attempts to address two issues:
 
 * Is an automatic or manual transmission better for cutting MPG (miles per gallon)
 * Quantify the MPG difference between automatic and manual transmissions
@@ -61,7 +61,7 @@ We observe a larger mean in the manual group. To make this report concise, furth
 
 # Statistical Inference
 
-Test the null hypothesis $H_0:$ it is equally likely that a randomly selected value of miles per gallon from the automatic transmission group will be less than or greater than a randomly selected value from the automatic transmission group via the Mann¨CWhitney U test. Unlike its parametric counterparts, this test is non-parametric does not require the assumption of normal distributions. 
+Test the null hypothesis $H_0:$ it is equally likely that a randomly selected value of miles per gallon from the automatic transmission group will be less than or greater than a randomly selected value from the automatic transmission group via the MannÂ¨CWhitney U test. Unlike its parametric counterparts, this test is non-parametric does not require the assumption of normal distributions. 
 
 Note that with prior EDA, we set the alternative hypothesis as it is more likely to randomly observe a larger `mpg` in the manual transmission group.
 
@@ -79,7 +79,7 @@ wilcox.test(mpg~am, data = mtcars, alternative = "less")
 ## alternative hypothesis: true location shift is less than 0
 ```
 
-Since the $p-value$ is less than 0.001, we can conclude that under a significance level of 0.05, automatic transmission is better for cutting miles per gallon for the 1973¨C1974 models.
+Since the $p-value$ is less than 0.001, we can conclude that under a significance level of 0.05, automatic transmission is better for cutting miles per gallon for the 1973Â¨C1974 models.
 
 # Modelling
 
