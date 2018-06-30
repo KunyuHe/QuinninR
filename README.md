@@ -47,4 +47,4 @@ List of the Published Work Samples
   
 * [Business Data Science Final Project: Based on Ecommerce Customers Data](http://rpubs.com/QuinninR/400933)
 
-  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS5/Project.md)
+  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS6/Business_Data_Science_Final_Project.md)
