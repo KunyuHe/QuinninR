@@ -33,6 +33,10 @@ List of the Published Work Samples
 
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS2/Final_Project_KunyuHE.md)
   
-* [Analysis of Variance (ANOVA): EDA, Two-way ANOVA, Post-hoc and Assumptions Testing](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS3/Homework3.md)
+* [Analysis of Variance (ANOVA): EDA, Two-way ANOVA, Post-hoc and Assumptions Testing](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS3/Homework3.md) __(In Chinese)__
 
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS3/Homework3.md)
+  
+* [Coursera Mentor Work Sample for Regression Models: 1974 Motor Trend US Data Analysis](https://rpubs.com/QuinninR/395465)
+
+  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS2/Final_Project_KunyuHE.md)
