@@ -51,4 +51,4 @@ Work Samples
   
 * [DataCamp Data Cleaning in R Coursework: A Comprehensive Example with Messy Weather Data](http://rpubs.com/QuinninR/407585)
 
-  [`.md`]()
+  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS7/Example.md)
