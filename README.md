@@ -17,7 +17,7 @@ This is a repo where I'll put my data analysis work samples documented with *R* 
 
 __To view my work samples, please review the list in the following section and find the ones that interest you. To further review corresponding codes behind a certain work, please register for Github, fork this repo, find the link to the corresponding `.md` file in the list in your forked repo, and edit the work.__
 
-__Any feedbacks on my works? You are welcomed to reach me at [kunyuhe@uchicago.com](kunyuhe@uchicago.com). You can also edit the documents directly in your forked repo and send me a pull request.__ Here is a [guide](https://help.github.com/articles/about-pull-requests/) for how to do so. I'll be glad to add you as a contributor to this project and maybe one day I'll change the name of this repo for you __;)__
+__Any feedbacks on my works? You are welcomed to reach me at [kunyuheecon@gmail.com](kunyuheecon@gmail.com). You can also edit the documents directly in your forked repo and send me a pull request.__ Here is a [guide](https://help.github.com/articles/about-pull-requests/) for how to do so. I'll be glad to add you as a contributor to this project and maybe one day I'll change the name of this repo for you __;)__
 
 __For Chinese users, if you would like to receive timely notice of this repo's further updates, you can follow my Wechat Official Account, `QuinninR`.__
 
