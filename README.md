@@ -23,7 +23,7 @@ __For Chinese users, if you would like to receive timely notice of this repo's f
 
 __Thanks for reading and have a good day! =v=__
 
-List of the Published Work Samples
+Work Samples
 -------------------------------------
 * [Coursera Mentor Work Sample for Statistical Inference: Simulations and Hypothesis Testing with R](https://rpubs.com/QuinninR/384471)
   
