@@ -2,9 +2,9 @@
 
 About Myself
 ---------------------------
-Hello, world! This is Quinn He. I'm a current senior student at Nanjing University, China and I'll become a M.A. candidate in [Computational Analysis & Public Policy](https://capp.sites.uchicago.edu/) at the University of Chicago, IL this fall. I study both economics and international relations. I'm interested in applied economic research in the field of education and environmental politics. 
+Hello, world! This is Kunyu He. I'm a current M.S. student in [Computational Analysis & Public Policy](https://capp.sites.uchicago.edu/) at Harris School of Public Policy, University of Chicago. I possess a BSc Economics from Nanjing University, with a second major in International Politics. I'm interested in data science with R & Python, applied economics and game theory. 
 
-I work with data, and I feel most comfortable working with *R* and *RStudio*. I'm currently working for [Netease Game](http://game.163.com/en/) as a data analyst and I'm also volunteering at [Coursera](https://www.coursera.org/) as a student mentor for the course *Linear Regression and Modeling* and *R Programming*. You are welcomed to get connected with me via my [LinkedIn page](https://www.linkedin.com/in/quinnhe/) and find more details on my past working experiences, skills, certificates and publications.
+I work with data, and I feel most comfortable working with *R*. I'm volunteering at [Coursera Inc.](https://www.coursera.org/) as a student mentor for *R Programming*. I worked for [Netease Game Inc.](http://game.163.com/en/) as a Data Analyst Intern. You are welcomed to get connected with me via my [LinkedIn](https://www.linkedin.com/in/quinnhe/) and find more details on my past working experiences, skills, certificates and publications.
 
 About this Repo
 ------------------------
