@@ -31,7 +31,7 @@ Work Samples
   
 * [Coursera Mentor Work Sample for Statistics with R Capstone: Determinants of Housing Price in Ames, Iowa](http://rpubs.com/QuinninR/385616)
 
-  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS2/Final_Project_KunyuHE.md)
+  [`.md`](https://github.com/KunyuHe/QuinninR/blob/master/Work%20Samples/WS2/Coursera%20Mentor%20Work%20Sample%20for%20Statistics%20with%20R%20Capstone:%20Determinants%20of%20Housing%20Price%20in%20Ames%2C%20Iowa.md)
   
 * Analysis of Variance (ANOVA): EDA, Two-way ANOVA, Post-hoc and Assumptions Testing __(In Chinese)__
 
