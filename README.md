@@ -35,7 +35,7 @@ Work Samples
   
 * Analysis of Variance (ANOVA): EDA, Two-way ANOVA, Post-hoc and Assumptions Testing __(In Chinese)__
 
-  [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS3/Homework3.md)
+  [`.md`](https://github.com/KunyuHe/QuinninR/blob/master/Work%20Samples/WS3/Analysis%20of%20Variance%20(ANOVA):%20EDA%2C%20Two-way%20ANOVA%2C%20Post-hoc%20and%20Assumptions%20Testing.md)
   
 * [Coursera Mentor Work Sample for Regression Models: 1974 Motor Trend US Data Analysis](https://rpubs.com/QuinninR/395465)
 
