@@ -54,4 +54,5 @@ Work Samples
   [`.md`](https://github.com/QuinninR/QuinninR-sample-analysis/blob/master/Work%20Samples/WS7/Example.md)
 
 * [DataCamp Cluster Analysis Coursework: Clustering Occupation Groups by Mean Wages across Time](http://rpubs.com/QuinninR/417507)
+
   [`.md`](https://github.com/KunyuHe/QuinninR/blob/master/Work%20Samples/WS9/DataCamp_Cluster_Analysis_Coursework.md)
