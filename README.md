@@ -58,4 +58,5 @@ Work Samples
   [`.md`](https://github.com/KunyuHe/QuinninR/blob/master/Work%20Samples/WS9/DataCamp_Cluster_Analysis_Coursework.md)
   
 * [Harris DayOne Orientation: Coding Lab Week 1 Assignment Student Work](http://rpubs.com/QuinninR/417830)
+
   [`.md`](https://github.com/KunyuHe/QuinninR/blob/master/Work%20Samples/WS10/Coding_Lab_Week_1_Assignment_Student_Work.md)
