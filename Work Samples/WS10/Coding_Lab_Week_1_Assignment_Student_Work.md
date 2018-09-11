@@ -3,11 +3,10 @@ title: "Coding Lab Week 1 Assignment Student Work"
 author: "Kunyu He CAPP'20"
 date: "7 Sep. 2018"
 output:
-  prettydoc::html_pretty:
-    highlight: github
-    keep_md: yes
-    pandoc_args: --number-sections
-    theme: architect
+        prettydoc::html_pretty:
+          theme: architect
+          highlight: github
+          keep_md: true
 ---
 
 
@@ -77,23 +76,23 @@ dim(acc2015)
 
 ```r
 # see columns in `acc2014` but not `acc2015`
-colnames(acc2015)[!(colnames(acc2014) %in% colnames(acc2015))]
+colnames(acc2014)[!(colnames(acc2014) %in% colnames(acc2015))]
 ```
 
 ```
-## [1] "RUR_URB"
+## [1] "ROAD_FNC"
 ```
 
 ```r
 # see columns in `acc2015` but not `acc2014`
-colnames(acc2014)[!(colnames(acc2015) %in% colnames(acc2014))]
+colnames(acc2015)[!(colnames(acc2015) %in% colnames(acc2014))]
 ```
 
 ```
-## [1] "ROAD_FNC" "ROUTE"    "TWAY_ID"
+## [1] "RUR_URB"  "FUNC_SYS" "RD_OWNER"
 ```
 
-The number of columns differs. While the `"RUR_URB"` column is in `acc2014` but not `acc2015`, `"ROAD_FNC"`, `"ROUTE"` and `"TWAY_ID"` are missing from `acc2014`.
+The number of columns differs. While the `"ROAD_FNC"` column is in `acc2014` but not `acc2015`, `"RUR_URB"`, `"FUNC_SYS"` and `"RD_OWNER"` are missing from `acc2014`.
 
 
 ```r
@@ -192,13 +191,12 @@ ggplot(agg_sel, aes(x = factor(YEAR), y = TOTAL, color = StateName, group = Stat
         geom_text_repel(label = ifelse(agg_sel$YEAR == 2014,
                                        agg_sel$StateName,
                                        ""),
-                        nudge_x = -0.25,
+                        nudge_x = -0.1,
                         direction = "y",
                         hjust = 0) + 
-        scale_y_continuous(trans = "log10", 
-                           limits = c(40, 10^3.6),
-                           breaks = c(10^2, 10^2.5, 10^3, 10^3.5),
-                           labels = expression(10^{2}, 10^{2.5}, 10^{3}, 10^{3.5})) + 
+        scale_y_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),
+                      labels = scales::trans_format("log10", scales::math_format(10^.x))) +
+        annotation_logticks(sides = "l") + 
         theme_minimal() + 
         labs(x = 'Year', y = 'Traffic Fatalities (Log Base 10)', 
              title = 'Traffic Fatalities Rise in Many States', 
@@ -213,3 +211,4 @@ ggplot(agg_sel, aes(x = factor(YEAR), y = TOTAL, color = StateName, group = Stat
 
 <img src="Coding_Lab_Week_1_Assignment_Student_Work_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
+$K.Y.$
